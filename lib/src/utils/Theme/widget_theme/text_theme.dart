@@ -12,7 +12,7 @@ class STextTheme{
           ),
 
           );
-  static TextTheme DarkTextTheme = TextTheme(
+  static TextTheme darkTextTheme = TextTheme(
           headlineMedium: GoogleFonts.montserrat(
             color: Colors.white,
           ),

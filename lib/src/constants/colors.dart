@@ -7,3 +7,4 @@ import 'dart:ui';
  const Color SDarkColor = Color(0xFF000000); // White for text or icon contrast
 
 
+const Color SPrimaryColor = Color(0xFF4E4B4B);

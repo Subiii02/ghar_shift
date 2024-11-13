@@ -7,3 +7,6 @@ const String SSplashImage = "assets/images/my_logo.png";
 const String SOnBoardingImage1 = "assets/images/onboarding_screens/onboardingscreen1.png";
 const String SOnBoardingImage2 = "assets/images/onboarding_screens/onboardingscreen2.png";
 const String SOnBoardingImage3 = "assets/images/onboarding_screens/onboardingscreen3.png";
+
+//welcome Screen images
+const String SWelcomeScreenImage = "assets/images/welcome_images/welcome_screen_image.png";

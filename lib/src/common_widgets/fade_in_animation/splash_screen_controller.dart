@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ghar_shift/src/features/authentication/screens/On_boarding/on_boarding_screen.dart';
-import '../screens/welcome/welcome_screen.dart';
+import '../../features/authentication/screens/welcome/welcome_screen.dart';
 
-class SplashScreenController extends GetxController{
-  static SplashScreenController get find => Get.find();
+class FadeInAnimationController extends GetxController{
+  static FadeInAnimationController get find => Get.find();
   RxBool animate = false.obs;
 
   Future startAnimation() async{

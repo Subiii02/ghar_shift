@@ -1,64 +1,70 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ghar_shift/src/common_widgets/fade_in_animation/fade_in_animation_controller.dart';
+import 'package:ghar_shift/src/constants/colors.dart';
 import 'package:ghar_shift/src/constants/image_strings.dart';
 import 'package:ghar_shift/src/constants/size.dart';
 import 'package:ghar_shift/src/constants/text_strings.dart';
-import 'package:ghar_shift/src/features/authentication/controllers/splash_screen_controller.dart';
-
-import '../../../../constants/colors.dart';
 
 class SplashScreen extends StatelessWidget {
-  SplashScreen({super.key});
-
-  final splashcontroller = Get.put(SplashScreenController());
+  const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    splashcontroller.startAnimation();
-    return Scaffold(
-      body: Stack(
-        children: [
-          Obx( () => AnimatedPositioned(
-              top: splashcontroller.animate.value ? 0 : -30,
-              left: splashcontroller.animate.value ? 0 : 30,
-              duration: const Duration(milliseconds: 1600),
-              child: const Image(image: AssetImage(SSplashTopIcon)),
-            ),
-          ),
-          Obx( () =>AnimatedPositioned(
-              duration: const Duration(milliseconds: 1600),
-              top: 80,
-              left: splashcontroller.animate.value ? SDefaultSize : -80,
-              child: AnimatedOpacity(
+    // Initialize the controller outside the build method
+    final controller = Get.put(FadeInAnimationController());
+
+    // Trigger animation
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller.startSplashAnimation();
+    });
+
+    return SafeArea(
+      child: Scaffold(
+        body: Obx(() {
+          // Observe animation state dynamically
+          final animate = controller.animate.value;
+
+          return Stack(
+            children: [
+              // Top Icon Animation
+              AnimatedPositioned(
+                duration: const Duration(milliseconds: 1200),
+                top: animate ? 0 : -30,
+                left: animate ? 0 : -30,
+                child: const Image(image: AssetImage(SSplashTopIcon)),
+              ),
+              // App Name and Tagline Animation
+              AnimatedPositioned(
                 duration: const Duration(milliseconds: 1600),
-                opacity: splashcontroller.animate.value ? 1 : 0,
+                top: 100,
+                left: animate ? SDefaultSize : -100,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(SAppName, style: Theme.of(context).textTheme.headlineMedium),
-                    Text(SAppTagLine, style: Theme.of(context).textTheme.titleMedium),
+                    Text(
+                      SAppName,
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      SAppTagLine,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
                   ],
                 ),
               ),
-            ),
-          ),
-          Obx( () => AnimatedPositioned(
-              duration: const Duration(milliseconds: 2400),
-              bottom: 100,
-              child: AnimatedOpacity(
-                duration: const Duration(milliseconds: 2400),
-                opacity: splashcontroller.animate.value ? 1 : 0,
+              // Splash Image Animation
+              AnimatedPositioned(
+                duration: const Duration(milliseconds: 2000),
+                bottom: animate ? 100 : 0,
                 child: const Image(image: AssetImage(SSplashImage)),
               ),
-            ),
-          ),
-          Obx( () => AnimatedPositioned(
-              duration: const Duration(milliseconds: 2400),
-              bottom: splashcontroller.animate.value ? 60 : 0,
-              right: SDefaultSize,
-              child: AnimatedOpacity(
+              // Circular Container Animation
+              AnimatedPositioned(
                 duration: const Duration(milliseconds: 2000),
-                opacity: splashcontroller.animate.value ? 1 : 0,
+                bottom: animate ? 60 : 0,
+                right: SDefaultSize,
                 child: Container(
                   width: SSplashContainerSize,
                   height: SSplashContainerSize,
@@ -68,9 +74,9 @@ class SplashScreen extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
-          ),
-        ],
+            ],
+          );
+        }),
       ),
     );
   }

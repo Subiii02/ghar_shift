@@ -25,4 +25,7 @@ const String SOnBoardingcounter3= "3";
 //--welcome Screen Text
 const String SWelcomeTitle = "WELCOME TO GHARSHIFT";
 const String SWelcomeSubTitle = "Let's us done your house moving";
+//const SLogin = 'Login';
+//const SSignup = 'Signup';
+
 

@@ -10,8 +10,8 @@ class SOutlinedButtonTheme{
 static final LightOutlinedButtonTheme = OutlinedButtonThemeData(
   style: OutlinedButton.styleFrom(
     shape: RoundedRectangleBorder(),
-    foregroundColor: SDarkColor,
-    side: BorderSide(color: SDarkColor),
+    foregroundColor: SSecondaryColor,
+    side: BorderSide(color: SSecondaryColor),
     padding: EdgeInsets.symmetric(vertical: SButtonHeight),
   ),
 );
@@ -20,7 +20,7 @@ static final darkOutlinedButtonTheme= OutlinedButtonThemeData(
   style: OutlinedButton.styleFrom(
     shape: RoundedRectangleBorder(),
     foregroundColor: SlightGray,
-    side: BorderSide(color: SDarkColor),
+    side: BorderSide(color: SSecondaryColor),
     padding: EdgeInsets.symmetric(vertical: SButtonHeight),
   ),
 );

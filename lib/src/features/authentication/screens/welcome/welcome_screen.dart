@@ -6,6 +6,8 @@ import 'package:ghar_shift/src/constants/colors.dart';
 import 'package:ghar_shift/src/constants/image_strings.dart';
 import 'package:ghar_shift/src/constants/size.dart';
 import 'package:ghar_shift/src/constants/text_strings.dart';
+import 'package:ghar_shift/src/features/authentication/screens/login/login_screen.dart';
+import 'package:ghar_shift/src/features/authentication/screens/signup/signup_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -27,7 +29,7 @@ class WelcomeScreen extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: isDarkMode ? SlightGray : SDarkColor,
+        backgroundColor: isDarkMode ? SlightGray : SSecondaryColor,
         body: Stack(
           children: [
             SFadeInAnimation(
@@ -79,7 +81,7 @@ class WelcomeScreen extends StatelessWidget {
                       children: [
                       Expanded(
                       child: OutlinedButton(
-                           onPressed: () => Get.to(() => const LoginScreen()),
+                           onPressed: () => Get.to(() => LoginScreen()),
                           child: Text(SLogin.toUpperCase()),
                          ),
                         ),

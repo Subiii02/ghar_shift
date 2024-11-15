@@ -11,8 +11,8 @@ static final LightElevatedButtonTheme = ElevatedButtonThemeData(
       elevation: 0,
       shape: RoundedRectangleBorder(),
       foregroundColor: SlightGray,
-      backgroundColor: SDarkColor,
-      side: BorderSide(color: SDarkColor),
+      backgroundColor: SSecondaryColor,
+      side: BorderSide(color: SSecondaryColor),
       padding: EdgeInsets.symmetric(vertical: SButtonHeight)
   ),
 );
@@ -22,9 +22,9 @@ static final darkElevatedButtonTheme = ElevatedButtonThemeData(
   style: ElevatedButton.styleFrom(
       elevation: 0,
       shape: RoundedRectangleBorder(),
-      foregroundColor: SDarkColor,
+      foregroundColor: SSecondaryColor,
       backgroundColor: SlightGray,
-      side: BorderSide(color: SDarkColor),
+      side: BorderSide(color: SSecondaryColor),
       padding: EdgeInsets.symmetric(vertical: SButtonHeight)
   ),
 );

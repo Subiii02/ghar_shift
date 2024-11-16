@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ghar_shift/src/constants/size.dart';
 import 'package:ghar_shift/src/constants/text_strings.dart';
+import 'package:ghar_shift/src/features/authentication/screens/forget_password/forget_password_options/forget_password_model_bottom_sheet.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -11,7 +12,7 @@ class LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Form(
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: SFormHeight -10 ),
+          padding: const EdgeInsets.symmetric(vertical: SFormHeight - 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -23,10 +24,10 @@ class LoginForm extends StatelessWidget {
                   border: OutlineInputBorder(),
                 ),
               ),
-              const SizedBox( height: SFormHeight -20),
+              const SizedBox(height: SFormHeight - 20),
               TextFormField(
                 decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.person_outline_outlined),
+                  prefixIcon: Icon(Icons.fingerprint_outlined),
                   labelText: SPassword,
                   hintText: SPassword,
                   border: OutlineInputBorder(),
@@ -36,16 +37,21 @@ class LoginForm extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: SFormHeight -20),
+              const SizedBox(height: SFormHeight - 20),
+
+
               Align(
                 alignment: Alignment.centerRight,
-                child: TextButton(onPressed: (){},
+                child: TextButton(
+                    onPressed: () {
+                      ForgetPasswordScreen.buildShowModalBottomSheet(context);
+                    },
                     child: Text(SForgetPassword)),
               ),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: (){},
+                    onPressed: () {},
                     child: Text(SLogin.toUpperCase())),
               )
             ],
@@ -53,3 +59,5 @@ class LoginForm extends StatelessWidget {
         ));
   }
 }
+
+

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ghar_shift/src/common_widgets/fade_in_animation/form/form_header_widget.dart';
-import 'package:ghar_shift/src/constants/colors.dart';
 import 'package:ghar_shift/src/constants/image_strings.dart';
 import 'package:ghar_shift/src/constants/size.dart';
 import 'package:ghar_shift/src/constants/text_strings.dart';
 import 'package:ghar_shift/src/features/authentication/screens/signup/widgets/signup_form_widget.dart';
-import 'package:ghar_shift/src/features/authentication/screens/signup/widgets/signup_form_widget.dart';
+
 
 
 class SignupScreen extends StatelessWidget {
@@ -33,8 +32,8 @@ class SignupScreen extends StatelessWidget {
                      width: double.infinity,
                      child: OutlinedButton.icon(
                          onPressed: () {},
-                         icon: const Image(image: AssetImage(SGoogleLogoImage) width: 20.0 ),
-                       label: Text(SSignInWithGoogle.toUppercase()),
+                         icon: const Image(image: AssetImage(SGoogleLogoImage),width: 20.0 ),
+                       label: Text(SSignInWithGoogle.toUpperCase()),
                      ),
                    ),
                     TextButton(

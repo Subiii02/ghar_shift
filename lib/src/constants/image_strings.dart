@@ -13,3 +13,6 @@ const String SWelcomeScreenImage = "assets/images/welcome_images/welcome_screen_
 
 //login image
 const String SGoogleLogoImage = "assets/logo/google_logo";
+
+//forgetpassword image
+const String SForgetPasswordImage = "assets/images/forget_password/forget_password.png";

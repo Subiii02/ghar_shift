@@ -1,11 +1,3 @@
-
-//--splash screen Text
-
-//--Generic Text
-const String SLogin = "Login";
-const String SSignup = "Signup";
-
-
 //--splash screen Text
 
 const String SAppName = "Gharshift";
@@ -16,7 +8,7 @@ const String SOnBoardingTitle1 = "Gharshift";
 const String SOnBoardingTitle2 = "Hello There";
 const String SOnBoardingTitle3 = "welcome to house moving app";
 const String SOnBoardingSubTitle1= "we are here to provide you the best experience";
-const String SOnBoardingSubTitle2 = "bye using our service";
+const String SOnBoardingSubTitle2 = "by using our service";
 const String SOnBoardingSubTitle3 = "again welcome";
 const String SOnBoardingcounter1 = "1";
 const String SOnBoardingcounter2 = "2";
@@ -35,3 +27,30 @@ const String SDontHaveAnAccount = "Don't have an Account?";
 const String SSignUpTitle = "Create your Account";
 const String SSignUpSubTitle= "Start Your Journey with us";
 const String SAlreadyHaveAnAccount= "Already have an Account? ";
+//used in app
+const String SNo = "No";
+const String SYes = "Yes";
+const String SNext = "Next";
+const String SLogin = "Login";
+const String SEmail = "E-Mail";
+const String SSignup = "Signup";
+const String SLogout = "Logout";
+const String SSuccess = "Success";
+const String SPhoneNo = "Phone No";
+const String SContinue = "Continue";
+const String SPassword = "Password";
+const String SFullName = "Full Name";
+const String SGetStarted = "Get Started";
+const String SForgetPassword = "Forget Password?";
+const String SSignInWithGoogle = "Sign-In with Google";
+//forget password Text
+const String SForgetPasswordTitle = "Select Email or Phone Method";
+const String SForgetPasswordSubTitle = "Select One Method To Reset Your Password";
+const String SResetViaEmail = "Reset Via Email Verification";
+const String SResetViaPhone = "Reset Via Phone Verification";
+
+//Forget password via phone number
+const String SForgetPhoneSubTitle = "Enter Your Register Number To Receive OTP";
+
+//Forget Password via email text
+const String SForgetMailSubTitle = "Enter your registered E-Mail to receive Opt";

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ghar_shift/src/constants/size.dart';
-import 'package:ghar_shift/src/constants/text_strings.dart';
-import 'package:ghar_shift/src/features/authentication/screens/forget_password/forget_password_options/forget_password_button_widget.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import '../../../../../constants/size.dart';
+import '../../../../../constants/text_strings.dart';
+import 'foget_password_button_widget.dart';
 
 class ForgetPasswordScreen{
   static Future<dynamic> buildShowModalBottomSheet(BuildContext context) {
@@ -20,7 +22,9 @@ class ForgetPasswordScreen{
               buttonIcon: Icons.mail_outline_rounded,
               title: SEmail,
               subTitle: SResetViaEmail,
-              onTap: (){},
+              onTap: (){
+                Navigator.pop(context);
+                Get.to(() =>ForgetPasswordScreen()); },
             ),
             const SizedBox(height: 20.0),
             ForgetPasswordButtonWidget(

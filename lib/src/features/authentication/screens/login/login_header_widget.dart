@@ -1,11 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ghar_shift/src/constants/image_strings.dart';
-import 'package:ghar_shift/src/constants/text_strings.dart';
+import '../../../../constants/image_strings.dart';
+import '../../../../constants/text_strings.dart';
 
 class LoginHeaderWidget extends StatelessWidget {
   const LoginHeaderWidget({
     super.key,
     required this.size,
+    required String image,
+    required String subtitle,
+    required String title,
   });
 
   final Size size;

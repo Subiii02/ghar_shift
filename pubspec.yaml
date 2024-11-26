@@ -40,6 +40,8 @@ dependencies:
   get: ^4.6.6
   liquid_swipe: ^3.1.0
   smooth_page_indicator: ^1.2.0+3
+  flutter_otp_text_field: ^1.2.0
+  path_provider: ^2.1.5
 
 
 
@@ -54,12 +56,6 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^4.0.0
 
-flutter_native_splash:
-  color: "#1E88E5"
-  color_dark: "#F5F5F5"
-  image: assets/images/my_logo.png
-  image_dark: assets/images/my_logo.png
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -72,11 +68,14 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
+  # assets:
   assets:
     - assets/images/
     - assets/images/splashscreen/
     - assets/images/onboarding_screens/
     - assets/images/welcome_images/
+    - assets/logo/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

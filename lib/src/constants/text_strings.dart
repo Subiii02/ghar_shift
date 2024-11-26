@@ -54,3 +54,8 @@ const String SForgetPhoneSubTitle = "Enter Your Register Number To Receive OTP";
 
 //Forget Password via email text
 const String SForgetMailSubTitle = "Enter your registered E-Mail to receive Opt";
+
+//Otp screen text
+const String SOtpTitle = "CODE";
+const String SOtpSubTitle = "Verfication";
+const String SOtpMessage = "Enter the verfication Code";

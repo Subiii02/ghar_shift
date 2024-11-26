@@ -1,7 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ghar_shift/src/constants/image_strings.dart';
-import 'package:ghar_shift/src/constants/size.dart';
-import 'package:ghar_shift/src/constants/text_strings.dart';
+import '../../../../constants/image_strings.dart';
+import '../../../../constants/size.dart';
+import '../../../../constants/text_strings.dart';
 
 class LoginFooterWidget extends StatelessWidget {
   const LoginFooterWidget({
@@ -14,16 +15,27 @@ class LoginFooterWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const Text("OR"),
-        const SizedBox(height: SFormHeight -20,),
+        const SizedBox(height: SFormHeight - 10),
         SizedBox(
-          width: double.infinity,
+          width: 320,
+          height: 50,
           child: OutlinedButton.icon(
-              icon: const Image(image: AssetImage(SGoogleLogoImage), width: 20.0,),
-              onPressed: () {},
-              label: Text(SSignInWithGoogle)),
+          iconAlignment: IconAlignment.start,
+            icon: const Image(
+              image: AssetImage(SGoogleLogoImage),
+              width: 40,
+              height: 40,// Adjusted width to prevent overflow
+            ),
+            onPressed: () {},
+            label: Text(
+              SSignInWithGoogle,
+              style: Theme.of(context).textTheme.bodyMedium,maxLines: 1,
+              textAlign: TextAlign.start
+
+            ),
+          ),
         ),
-        const SizedBox(
-          height: SFormHeight -20,),
+        const SizedBox(height: SFormHeight - 1),
         TextButton(
           onPressed: () {},
           child: Text.rich(
@@ -33,11 +45,12 @@ class LoginFooterWidget extends StatelessWidget {
               children: [
                 TextSpan(
                   text: SSignup,
-                  style: TextStyle(color: Colors.blue),
-                )
+                  style: const TextStyle(color: Colors.blue),
+                ),
               ],
-            ), ),
-        )
+            ),
+          ),
+        ),
       ],
     );
   }

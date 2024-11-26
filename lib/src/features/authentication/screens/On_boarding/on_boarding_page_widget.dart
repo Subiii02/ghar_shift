@@ -1,6 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ghar_shift/src/constants/size.dart';
-import 'package:ghar_shift/src/features/authentication/models/model_on_boarding.dart';
+import '../../../../constants/size.dart';
+import '../../models/model_on_boarding.dart';
 
 class OnBoardingPageWidget extends StatelessWidget {
   final OnBoardingModel model;

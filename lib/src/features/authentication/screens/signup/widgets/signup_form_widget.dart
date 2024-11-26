@@ -1,6 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ghar_shift/src/constants/size.dart';
-import 'package:ghar_shift/src/constants/text_strings.dart';
+import '../../../../../constants/size.dart';
+import '../../../../../constants/text_strings.dart';
 
 class SignUpFormWidget extends StatelessWidget {
   const SignUpFormWidget({

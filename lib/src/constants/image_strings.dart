@@ -12,7 +12,8 @@ const String SOnBoardingImage3 = "assets/images/onboarding_screens/onboardingscr
 const String SWelcomeScreenImage = "assets/images/welcome_images/welcome_screen_image.png";
 
 //login image
-const String SGoogleLogoImage = "assets/logo/google_logo";
+const String SGoogleLogoImage = "assets/logo/google_logo.png";
+
 
 //forgetpassword image
 const String SForgetPasswordImage = "assets/images/forget_password/forget_password.png";

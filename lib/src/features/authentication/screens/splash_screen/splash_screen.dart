@@ -1,12 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ghar_shift/src/common_widgets/fade_in_animation/fade_in_animation_controller.dart';
-import 'package:ghar_shift/src/constants/colors.dart';
-import 'package:ghar_shift/src/constants/image_strings.dart';
-import 'package:ghar_shift/src/constants/size.dart';
-import 'package:ghar_shift/src/constants/text_strings.dart';
+import 'package:get/get_core/src/get_main.dart';
+import '../../../../common_widgets/fade_in_animation/fade_in-animation_controller.dart';
+import '../../../../constants/colors.dart';
+import '../../../../constants/image_strings.dart';
+import '../../../../constants/size.dart';
+import '../../../../constants/text_strings.dart';
 
 class SplashScreen extends StatelessWidget {
+  static const String routeName = '/splash';
   const SplashScreen({super.key});
 
   @override

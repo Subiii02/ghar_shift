@@ -1,17 +1,16 @@
-import 'package:flutter/material.dart';
+
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:get/instance_manager.dart';
-import 'package:ghar_shift/src/common_widgets/fade_in_animation/fade_in_animation_model.dart';
-import 'package:ghar_shift/src/common_widgets/fade_in_animation/splash_screen_controller.dart';
-import 'package:ghar_shift/src/constants/image_strings.dart';
+import 'fade_in-animation_controller.dart';
+import 'fade_in_animation_model.dart';
 
 class SFadeAnimation extends StatelessWidget {
-   SFadeAnimation({
+  SFadeAnimation({
     super.key,
     required this.durationInMs,
-     required this.child,
-     this.animate,
+    required this.child,
+    this.animate,
   });
 
   final controller = Get.put(FadeInAnimationController());
@@ -23,17 +22,17 @@ class SFadeAnimation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() => AnimatedPositioned(
-            duration: Duration(milliseconds: durationInMs),
+      duration: Duration(milliseconds: durationInMs),
       top: controller.animate.value ? animate!.topAfter : animate!.topBefore,
       left: controller.animate.value ? animate!.leftAfter : animate!.leftAfter,
       bottom: controller.animate.value ? animate!.bottomAfter : animate!.bottomBefore,
       right: controller.animate.value ? animate!.rightAfter : animate!.rightBefore,
       child: AnimatedOpacity(
-      duration: Duration(milliseconds: durationInMs),
-      opacity: controller.animate.value ? 1 : 0,
-      child: child,
+        duration: Duration(milliseconds: durationInMs),
+        opacity: controller.animate.value ? 1 : 0,
+        child: child,
 
-    ),
+      ),
     ),
     );
   }

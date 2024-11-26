@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:ghar_shift/src/constants/colors.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:liquid_swipe/PageHelpers/LiquidController.dart';
-import 'package:flutter/material.dart';
+import '../../../constants/colors.dart';
 import '../../../constants/image_strings.dart';
 import '../../../constants/text_strings.dart';
 import '../models/model_on_boarding.dart';

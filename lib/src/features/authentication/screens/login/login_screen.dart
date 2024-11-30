@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import '../../../../common_widgets/form/form_header_widget.dart';
 import '../../../../constants/image_strings.dart';
 import '../../../../constants/size.dart';
@@ -13,7 +12,6 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Get the user type passed from the previous screen
 
 
     return SafeArea(
@@ -21,15 +19,15 @@ class LoginScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.all(SDefaultSize),
-            child: Column(
+            child: const Column(
               children: [
                 FormHeaderWidget(
                   image: SWelcomeScreenImage,
-                  title: "Login", // Display user type in title
+                  title: "Login",
                   subTitle: SLoginSubTitle,
                 ),
                 // Login Form
-                const LoginForm(),
+                LoginForm(),
                 // Footer
                 LoginFooterWidget(),
               ],

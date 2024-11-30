@@ -7,7 +7,7 @@ import '../login/login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   static const String routeName = '/welcome';
-  const WelcomeScreen({Key? key}) : super(key: key);
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class WelcomeScreen extends StatelessWidget {
                     "User",
                     Icons.person,
                         () {
-                      Get.to(() => LoginScreen());
+                      Get.to(() => const LoginScreen());
                       Get.snackbar(
                         "Login",
                         "You are logging in as a User",
@@ -80,7 +80,7 @@ class WelcomeScreen extends StatelessWidget {
                     "Driver",
                     Icons.drive_eta,
                         () {
-                      Get.to(() => LoginScreen());
+                      Get.to(() => const LoginScreen());
                       Get.snackbar(
                         "Login",
                         "You are logging in as a Driver",
@@ -94,7 +94,7 @@ class WelcomeScreen extends StatelessWidget {
                     "Labor",
                     Icons.construction,
                         () {
-                      Get.to(() => LoginScreen());
+                      Get.to(() => const LoginScreen());
                       Get.snackbar(
                         "Login",
                         "You are logging in as a Labor",

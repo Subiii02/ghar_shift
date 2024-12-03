@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:ghar_shift/src/features/authentication/screens/google_signin/google_signin.dart';
 import 'package:ghar_shift/src/features/authentication/screens/login/login_screen.dart'; // Import the LoginScreen
 import 'package:ghar_shift/src/features/authentication/screens/signup/widgets/signup_form_widget.dart';
 import '../../../../../common_widgets/form/form_header_widget.dart';
@@ -13,6 +15,7 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller =Get.put(GoogleAuthService());
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -27,23 +30,23 @@ class SignupScreen extends StatelessWidget {
                   title: SSignUpTitle,
                   subTitle: SSignUpSubTitle,
                 ),
-                const SizedBox(height: SDefaultSize), // Add spacing between widgets
+                const SizedBox(height: SDefaultSize),
 
                 // Signup Form Widget
                 const SignUpFormWidget(),
 
-                const SizedBox(height: SDefaultSize), // Add spacing before "OR" section
+                const SizedBox(height: SDefaultSize),
 
                 // Divider Section with "OR"
-                Column(
+                const Column(
                   children: [
-                    const Divider(thickness: 1), // Horizontal divider line
-                    const Text(
+                    Divider(thickness: 1),
+                    Text(
                       "OR",
-                      style: TextStyle(fontWeight: FontWeight.bold), // Make "OR" bold for better visibility
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    const Divider(thickness: 1), // Another divider
-                    const SizedBox(height: SDefaultSize / 2),
+                    Divider(thickness: 1),
+                    SizedBox(height: SDefaultSize / 2),
                   ],
                 ),
 
@@ -52,8 +55,7 @@ class SignupScreen extends StatelessWidget {
                   width: double.infinity,
                   child: OutlinedButton.icon(
                     onPressed: () {
-                      // TODO: Implement Google Sign-In logic
-                      debugPrint('Google Sign-In pressed');
+                      controller.signInWithGoogle();
                     },
                     icon: const Image(
                       image: AssetImage(SGoogleLogoImage),
@@ -63,13 +65,12 @@ class SignupScreen extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: SDefaultSize), // Add spacing before "Already have an account" section
+                const SizedBox(height: SDefaultSize),
 
                 // Already Have an Account Section
                 Center(
                   child: TextButton(
                     onPressed: () {
-                      // Navigate to Login Screen
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -86,7 +87,7 @@ class SignupScreen extends StatelessWidget {
                           ),
                           TextSpan(
                             text: SLogin.toUpperCase(),
-                            style: const TextStyle(fontWeight: FontWeight.bold), // Make login bold
+                            style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),

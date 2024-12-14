@@ -20,8 +20,8 @@ class LoginFooterWidget extends StatelessWidget {
   Future<void> _handleGoogleSignIn(BuildContext context) async {
     try {
       const idToken = "mock-google-id-token";
-      const email = "user@example.com";
-      const name = "John Doe";
+      const email = "Subhan@example.com";
+      const name = "Subhan";
       const photoUrl = "https://example.com/photo.jpg";
 
 

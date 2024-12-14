@@ -1,8 +1,18 @@
+buildscript {
+    repositories {
+        google() // Add this line if not already present
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.0' // Ensure you have the appropriate version
+        classpath 'com.google.gms:google-services:4.3.10' // Added Google services classpath
+    }
+}
+
 allprojects {
     repositories {
-        google()
+        google() // Ensured google repository is present
         mavenCentral()
-        // Ensure JCenter is removed if it exists
     }
 }
 

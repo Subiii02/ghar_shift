@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class UserDashboard extends StatelessWidget {
+  static const String routeName = '/user_dashboard';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

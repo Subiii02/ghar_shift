@@ -19,9 +19,9 @@ class LoginScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.all(SDefaultSize),
-            child: const Column(
+            child: Column(
               children: [
-                FormHeaderWidget(
+                const FormHeaderWidget(
                   image: SWelcomeScreenImage,
                   title: "Login",
                   subTitle: SLoginSubTitle,
@@ -29,7 +29,7 @@ class LoginScreen extends StatelessWidget {
                 // Login Form
                 LoginForm(),
                 // Footer
-                LoginFooterWidget(),
+                const LoginFooterWidget(),
               ],
             ),
           ),

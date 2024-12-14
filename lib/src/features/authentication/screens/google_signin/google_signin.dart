@@ -1,4 +1,3 @@
-
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -51,7 +50,7 @@ class GoogleAuthService {
     print("Preparing to send user data to backend...");
 
     // Replace <your-backend-url> with your backend's Google authentication endpoint
-    final url = Uri.parse('http://<your-backend-url>/auth/google');
+    final url = Uri.parse('http://your-backend-url/api/auth/google'); // update the endpoint here
 
     try {
       final response = await http.post(
@@ -60,10 +59,7 @@ class GoogleAuthService {
           'Content-Type': 'application/json',
         },
         body: jsonEncode({
-          'name': name,
-          'email': email,
-          'photoUrl': photoUrl,
-          'idToken': idToken,
+          'idToken': idToken, // keep this consistent with your backend code
         }),
       );
 

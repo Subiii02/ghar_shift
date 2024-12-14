@@ -103,10 +103,10 @@ class LoginFooterWidget extends StatelessWidget {
             TextSpan(
               text: SDontHaveAnAccount,
               style: Theme.of(context).textTheme.bodySmall,
-              children: [
+              children: const [
                 TextSpan(
                   text: SSignup,
-                  style: const TextStyle(color: Colors.blue),
+                  style: TextStyle(color: Colors.blue),
                 ),
               ],
             ),

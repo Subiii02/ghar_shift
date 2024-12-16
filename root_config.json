@@ -1,0 +1,6 @@
+{
+    "name": "ghar_shift",
+    "provider_region": "aws-ap-south-1",
+    "deployment_model": "LOCAL",
+    "environment": "development"
+}

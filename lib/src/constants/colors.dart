@@ -1,4 +1,5 @@
 import 'dart:ui';
+
 //List of all colors
 const Color SprimaryBlue = Color(0xFF1E88E5); // Blue for backgrounds or primary elements
 const Color SlightGray = Color(0xFFF5F5F5); // Light gray for backgrounds and cards

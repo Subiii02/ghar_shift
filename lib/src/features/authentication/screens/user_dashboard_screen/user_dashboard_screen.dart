@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../constants/colors.dart';
 
 class UserDashboard extends StatelessWidget {
   static const String routeName = '/user_dashboard';
@@ -6,17 +7,17 @@ class UserDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple, // Customize app bar color
+        backgroundColor: SprimaryBlue, // Primary Blue for app bar
         elevation: 0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
-              icon: Icon(Icons.menu, color: Colors.white),
+              icon: Icon(Icons.menu, color: SSecondaryColor), // Secondary color for icons
               onPressed: () {}, // Handle menu icon press
             ),
             Text(
-              'moveit',
+              'Ghar Shift',
               style: TextStyle(
                 color: Colors.orange,
                 fontSize: 22,
@@ -24,7 +25,7 @@ class UserDashboard extends StatelessWidget {
               ),
             ),
             IconButton(
-              icon: Icon(Icons.person, color: Colors.white),
+              icon: Icon(Icons.person, color: SSecondaryColor), // Secondary color for icons
               onPressed: () {
                 // Navigate to user profile screen
               },
@@ -39,11 +40,11 @@ class UserDashboard extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: TextField(
               decoration: InputDecoration(
-                hintText: 'Search for services...',
+                hintText: 'Search For Anything...',
                 prefixIcon: Icon(Icons.search, color: Colors.grey),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25),
-                  borderSide: BorderSide(color: Colors.grey),
+                  borderSide: BorderSide(color: SlightGray), // Light gray border
                 ),
               ),
             ),
@@ -53,7 +54,7 @@ class UserDashboard extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 16),
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: Colors.deepPurple,
+              color: SprimaryBlue, // Primary blue background
               borderRadius: BorderRadius.circular(15),
             ),
             child: Column(
@@ -66,7 +67,7 @@ class UserDashboard extends StatelessWidget {
                 Text(
                   'Your Move, Anytime, Anywhere',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: SlightGray, // Light gray for text
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -75,7 +76,7 @@ class UserDashboard extends StatelessWidget {
                 SizedBox(height: 5),
                 Text(
                   'Smooth Journeys, Effortlessly Arranged',
-                  style: TextStyle(color: Colors.white, fontSize: 14),
+                  style: TextStyle(color: SlightGray, fontSize: 14), // Light gray for text
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -89,10 +90,11 @@ class UserDashboard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Our Services',
+                  'Services We Provide...',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
+                    color: SPrimaryColor, // Primary color for section title
                   ),
                 ),
                 SizedBox(height: 10),
@@ -152,7 +154,7 @@ class ServiceCard extends StatelessWidget {
           Text(
             title,
             style: TextStyle(
-              color: Colors.deepPurple,
+              color: SprimaryBlue, // Primary blue for text
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
@@ -161,7 +163,7 @@ class ServiceCard extends StatelessWidget {
           SizedBox(height: 5),
           Text(
             description,
-            style: TextStyle(color: Colors.black54),
+            style: TextStyle(color: SPrimaryColor), // Primary color for description
             textAlign: TextAlign.center,
           ),
         ],

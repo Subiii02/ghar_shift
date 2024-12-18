@@ -13,9 +13,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   // Text editing controllers for user inputs
   final TextEditingController _nameController = TextEditingController(text: 'Subhan');
-  final TextEditingController _emailController = TextEditingController(text: 'subii@gmail.com');
+  final TextEditingController _emailController = TextEditingController(text: 'Subhan@gmail.com');
   final TextEditingController _phoneController = TextEditingController(text: '+1234567890');
-  final TextEditingController _cityController = TextEditingController(text: 'Islamabad');
+  final TextEditingController _cityController = TextEditingController(text: 'Islammabad');
   final TextEditingController _addressController = TextEditingController(text: '123 Main Street');
 
   // State variable to toggle between view and edit modes
@@ -29,6 +29,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
         _profileImage = File(pickedFile.path);
       });
     }
+  }
+
+  // Function to display a Snackbar
+  void _showSnackbar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: Duration(seconds: 2),
+        backgroundColor: Colors.green,
+      ),
+    );
   }
 
   @override
@@ -81,12 +92,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ElevatedButton(
               onPressed: () {
                 setState(() {
+                  if (_isEditing) {
+                    // Save changes and show confirmation
+                    _showSnackbar('Profile has been updated successfully!');
+                  }
                   _isEditing = !_isEditing;
                 });
-                if (!_isEditing) {
-                  // Save logic can be added here
-                  // Example: print('Updated Profile Details');
-                }
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: _isEditing ? Colors.green : SprimaryBlue,

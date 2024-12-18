@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ghar_shift/src/features/authentication/screens/user_dashboard_screen/profile_screen.dart';
 import '../../../../constants/colors.dart';
+import 'menu_screen.dart';
 
 class UserDashboard extends StatelessWidget {
   static const String routeName = '/user_dashboard';
@@ -15,7 +16,13 @@ class UserDashboard extends StatelessWidget {
           children: [
             IconButton(
               icon: Icon(Icons.menu, color: SSecondaryColor), // Secondary color for icons
-              onPressed: () {}, // Handle menu icon press
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MenuScreen()),
+                );
+
+              }, // Handle menu icon press
             ),
             Text(
               'Ghar Shift',

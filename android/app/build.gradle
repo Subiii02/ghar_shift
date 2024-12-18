@@ -22,11 +22,11 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.ghar_shift"
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
-        versionCode = flutter.versionCode
-        versionName = flutter.versionName
+        applicationId "com.example.ghar_shift" // Replace with your app ID if different
+        minSdkVersion 23 // Update this value to 23
+        targetSdkVersion flutter.targetSdkVersion // Use the targetSdkVersion from Flutter
+        versionCode flutter.versionCode // Use Flutter's version code
+        versionName flutter.versionName // Use Flutter's version name
     }
 
     buildTypes {

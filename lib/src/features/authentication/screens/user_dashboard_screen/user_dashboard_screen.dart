@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ghar_shift/src/features/authentication/screens/user_dashboard_screen/profile_screen.dart';
 import '../../../../constants/colors.dart';
 
 class UserDashboard extends StatelessWidget {
@@ -27,7 +28,10 @@ class UserDashboard extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.person, color: SSecondaryColor), // Secondary color for icons
               onPressed: () {
-                // Navigate to user profile screen
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProfileScreen()),
+                );
               },
             ),
           ],

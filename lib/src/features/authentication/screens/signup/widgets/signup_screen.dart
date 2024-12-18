@@ -33,7 +33,7 @@ class SignupScreen extends StatelessWidget {
                 const SizedBox(height: SDefaultSize),
 
                 // Signup Form Widget
-                const SignUpFormWidget(),
+                 SignUpFormWidget(),
 
                 const SizedBox(height: SDefaultSize),
 

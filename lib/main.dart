@@ -9,15 +9,15 @@ import 'package:ghar_shift/src/features/authentication/screens/splash_screen/spl
 import 'package:ghar_shift/src/features/authentication/screens/user_type_selection_screen/user_type_selection_screen.dart';
 import 'package:ghar_shift/src/features/authentication/screens/welcome/welcome_screen.dart';
 
-import 'firebase_options.dart';
+import 'src/features/authentication/screens/user_dashboard_screen/user_dashboard_screen.dart';
 
-Future<void> main() async {
-  await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform,
-       );
 
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ghar Shift',
-      initialRoute: '/onboarding', // Start at Splash Screen
+      initialRoute: '/user_dashboard',
       getPages: [
         GetPage(name: '/splash', page: () => const SplashScreen()),
         GetPage(name: '/onboarding', page: () => const OnBoardingScreen()),
@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/login', page: () => const LoginScreen()),
         GetPage(name: '/signup', page: () => const SignupScreen()),
         GetPage(name: '/forgot-password', page: () => const ForgotPasswordScreen()),
+        GetPage(name: '/user_dashboard', page: () => UserDashboard()),
       ],
 
       unknownRoute: GetPage(

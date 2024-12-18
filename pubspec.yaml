@@ -44,10 +44,8 @@ dependencies:
   path_provider: ^2.1.5
   google_sign_in: ^5.4.3
   http: ^1.2.2
-  realm: ^20.0.0
-  realm_dart: ^20.0.0
-  realm_common: ^20.0.0
-  realm_generator: ^20.0.0
+  firebase_core: ^3.8.1
+
 
 
 

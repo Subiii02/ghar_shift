@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ghar_shift/src/features/authentication/screens/On_boarding/on_boarding_screen.dart';
@@ -8,7 +9,13 @@ import 'package:ghar_shift/src/features/authentication/screens/splash_screen/spl
 import 'package:ghar_shift/src/features/authentication/screens/user_type_selection_screen/user_type_selection_screen.dart';
 import 'package:ghar_shift/src/features/authentication/screens/welcome/welcome_screen.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+Future<void> main() async {
+  await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+       );
+
   runApp(const MyApp());
 }
 

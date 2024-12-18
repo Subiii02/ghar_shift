@@ -14,8 +14,6 @@ class SignUpFormWidget extends StatelessWidget {
       final appConfig = AppConfiguration(realmAppId);
       final app = App(appConfig);
 
-
-
       // Register the user
       await app.emailPasswordAuth.registerUser(email, password);
 

@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "682843229299",
+    "project_id": "ghar-shift-cacd8",
+    "storage_bucket": "ghar-shift-cacd8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682843229299:android:3f93f15d5968fc2ecbee06",
+        "android_client_info": {
+          "package_name": "com.example.ghar_shift"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682843229299-p590708d213e032rnt3lta2o51uth1de.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ghar_shift",
+            "certificate_hash": "9ba3f03b628ef2f6de878d490cf8ff85367db330"
+          }
+        },
+        {
+          "client_id": "682843229299-64k1gqvjru5v7tnu5nprmb793ofk4i16.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhb-geXGph5crjPkKtMHJ1_u2K2NVx9LA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682843229299-64k1gqvjru5v7tnu5nprmb793ofk4i16.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "682843229299-er6imdma07svhk3339ff1umabg3jqe6j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.gharShift"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

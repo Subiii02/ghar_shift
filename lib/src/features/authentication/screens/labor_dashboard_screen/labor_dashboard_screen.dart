@@ -21,7 +21,7 @@ class LaborDashboard extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MenuLaborscreen()),
+                MaterialPageRoute(builder: (context) => MenuLaborScreen()),
               );
 
               }, // Handle menu icon press
@@ -36,7 +36,8 @@ class LaborDashboard extends StatelessWidget {
             ),
             IconButton(
               icon: const Icon(Icons.person, color: Colors.grey),
-              onPressed: () {Navigator.push(
+              onPressed: () {
+                  Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => ProfileLaborScreen()),
               );

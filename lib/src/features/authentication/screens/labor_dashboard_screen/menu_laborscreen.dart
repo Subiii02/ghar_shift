@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ghar_shift/src/features/authentication/screens/labor_dashboard_screen/profile_laborscreen.dart';
 import '../../../../constants/colors.dart';
 
-class MenuLaborscreen extends StatelessWidget {
-  const MenuLaborscreen({super.key});
+class MenuLaborScreen extends StatelessWidget {
+  const MenuLaborScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -196,7 +196,6 @@ class MenuLaborscreen extends StatelessWidget {
               onPressed: () {
                 _showSnackbar(context, 'You have been logged out.');
                 Navigator.pop(context); // Close the dialog
-                // Add logout logic here
               },
               child: const Text('Yes'),
             ),

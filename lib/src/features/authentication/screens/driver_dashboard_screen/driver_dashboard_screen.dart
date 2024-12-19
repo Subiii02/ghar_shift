@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ghar_shift/src/features/authentication/screens/driver_dashboard_screen/menu_driverscreen.dart';
+import 'package:ghar_shift/src/features/authentication/screens/driver_dashboard_screen/profile_driverscreen.dart';
 
 class DriverDashboard extends StatelessWidget {
   static const String routeName = '/driver_dashboard';
@@ -16,12 +18,18 @@ class DriverDashboard extends StatelessWidget {
           children: [
             IconButton(
               icon: const Icon(Icons.menu, color: Colors.white),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MenuDriverScreen()),
+                );
+
+              },
             ),
             const Text(
               'Driver Dashboard',
               style: TextStyle(
-                color: Color(0xFFFF9800),
+                color: Color(0xFFFBFBFB),
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
@@ -29,6 +37,10 @@ class DriverDashboard extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.person, color: Colors.white),
               onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileDriverScreen()),
+                );
 
               },
             ),

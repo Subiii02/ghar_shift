@@ -5,6 +5,8 @@ import 'menu_screen.dart';
 
 class UserDashboard extends StatelessWidget {
   static const String routeName = '/user_dashboard';
+
+  const UserDashboard({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +17,7 @@ class UserDashboard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
-              icon: Icon(Icons.menu, color: SSecondaryColor), // Secondary color for icons
+              icon: const Icon(Icons.menu, color: SSecondaryColor), // Secondary color for icons
               onPressed: () {
                 Navigator.push(
                   context,
@@ -24,7 +26,7 @@ class UserDashboard extends StatelessWidget {
 
               }, // Handle menu icon press
             ),
-            Text(
+            const Text(
               'Ghar Shift',
               style: TextStyle(
                 color: Colors.orange,
@@ -33,7 +35,7 @@ class UserDashboard extends StatelessWidget {
               ),
             ),
             IconButton(
-              icon: Icon(Icons.person, color: SSecondaryColor), // Secondary color for icons
+              icon: const Icon(Icons.person, color: SSecondaryColor), // Secondary color for icons
               onPressed: () {
                 Navigator.push(
                     context,
@@ -52,10 +54,10 @@ class UserDashboard extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Search For Anything...',
-                prefixIcon: Icon(Icons.search, color: Colors.grey),
+                prefixIcon: const Icon(Icons.search, color: Colors.grey),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25),
-                  borderSide: BorderSide(color: SlightGray), // Light gray border
+                  borderSide: const BorderSide(color: SlightGray), // Light gray border
                 ),
               ),
             ),
@@ -74,8 +76,8 @@ class UserDashboard extends StatelessWidget {
                   'assets/banner.png', // Replace with your banner image
                   height: 120,
                 ),
-                SizedBox(height: 10),
-                Text(
+                const SizedBox(height: 10),
+                const Text(
                   'Your Move, Anytime, Anywhere',
                   style: TextStyle(
                     color: SlightGray, // Light gray for text
@@ -84,8 +86,8 @@ class UserDashboard extends StatelessWidget {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 5),
-                Text(
+                const SizedBox(height: 5),
+                const Text(
                   'Smooth Journeys, Effortlessly Arranged',
                   style: TextStyle(color: SlightGray, fontSize: 14), // Light gray for text
                   textAlign: TextAlign.center,
@@ -93,7 +95,7 @@ class UserDashboard extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           // Services Section
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -140,7 +142,7 @@ class ServiceCard extends StatelessWidget {
   final String description;
   final String imagePath;
 
-  const ServiceCard({
+  const ServiceCard({super.key,
     required this.title,
     required this.description,
     required this.imagePath,
@@ -150,7 +152,7 @@ class ServiceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.4,
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.orange),
         borderRadius: BorderRadius.circular(15),
@@ -161,20 +163,20 @@ class ServiceCard extends StatelessWidget {
             imagePath, // Replace with your image assets
             height: 60,
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               color: SprimaryBlue, // Primary blue for text
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Text(
             description,
-            style: TextStyle(color: SPrimaryColor), // Primary color for description
+            style: const TextStyle(color: SPrimaryColor), // Primary color for description
             textAlign: TextAlign.center,
           ),
         ],

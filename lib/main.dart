@@ -9,6 +9,8 @@ import 'package:ghar_shift/src/features/authentication/screens/splash_screen/spl
 import 'package:ghar_shift/src/features/authentication/screens/user_type_selection_screen/user_type_selection_screen.dart';
 import 'package:ghar_shift/src/features/authentication/screens/welcome/welcome_screen.dart';
 
+import 'src/features/authentication/screens/driver_dashboard_screen/driver_dashboard_screen.dart';
+import 'src/features/authentication/screens/labor_dashboard_screen/labor_dashboard_screen.dart';
 import 'src/features/authentication/screens/user_dashboard_screen/user_dashboard_screen.dart';
 
 
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ghar Shift',
-      initialRoute: '/user_dashboard',
+      initialRoute: '/labor_dashboard',
       getPages: [
         GetPage(name: '/splash', page: () => const SplashScreen()),
         GetPage(name: '/onboarding', page: () => const OnBoardingScreen()),
@@ -36,7 +38,10 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/login', page: () => const LoginScreen()),
         GetPage(name: '/signup', page: () => const SignupScreen()),
         GetPage(name: '/forgot-password', page: () => const ForgotPasswordScreen()),
-        GetPage(name: '/user_dashboard', page: () => UserDashboard()),
+        GetPage(name: '/user_dashboard', page: () => const UserDashboard()),
+        GetPage(name: '/labor_dashboard', page: () => const LaborDashboard()),
+        GetPage(name: '/driver_dashboard', page: () => const DriverDashboard()),
+
       ],
 
       unknownRoute: GetPage(

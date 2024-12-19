@@ -3,20 +3,22 @@ import 'package:flutter/material.dart';
 class DriverDashboard extends StatelessWidget {
   static const String routeName = '/driver_dashboard';
 
+  const DriverDashboard({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF1E88E5),
+        backgroundColor: const Color(0xFF1E88E5),
         elevation: 0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
-              icon: Icon(Icons.menu, color: Colors.white),
+              icon: const Icon(Icons.menu, color: Colors.white),
               onPressed: () {},
             ),
-            Text(
+            const Text(
               'Driver Dashboard',
               style: TextStyle(
                 color: Color(0xFFFF9800),
@@ -25,7 +27,7 @@ class DriverDashboard extends StatelessWidget {
               ),
             ),
             IconButton(
-              icon: Icon(Icons.person, color: Colors.white),
+              icon: const Icon(Icons.person, color: Colors.white),
               onPressed: () {
 
               },
@@ -41,12 +43,12 @@ class DriverDashboard extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Search For Anything...',
-                prefixIcon: Icon(Icons.search, color: Colors.grey),
+                prefixIcon: const Icon(Icons.search, color: Colors.grey),
                 filled: true,
-                fillColor: Color(0xFFF5F5F5), // SlightGray for background
+                fillColor: const Color(0xFFF5F5F5), // SlightGray for background
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25),
-                  borderSide: BorderSide(color: Color(0xFF1E88E5)), // SprimaryBlue
+                  borderSide: const BorderSide(color: Color(0xFF1E88E5)), // SprimaryBlue
                 ),
               ),
             ),
@@ -56,7 +58,7 @@ class DriverDashboard extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 16),
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: Color(0xFF1E88E5), // SprimaryBlue
+              color: const Color(0xFF1E88E5), // SprimaryBlue
               borderRadius: BorderRadius.circular(15),
             ),
             child: Column(
@@ -65,8 +67,8 @@ class DriverDashboard extends StatelessWidget {
                   'assets/driver_banner.png', // Replace with your banner image
                   height: 120,
                 ),
-                SizedBox(height: 10),
-                Text(
+                const SizedBox(height: 10),
+                const Text(
                   'Welcome, Driver!',
                   style: TextStyle(
                     color: Colors.white,
@@ -75,8 +77,8 @@ class DriverDashboard extends StatelessWidget {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 5),
-                Text(
+                const SizedBox(height: 5),
+                const Text(
                   'Efficiently Manage Your Jobs',
                   style: TextStyle(color: Colors.white, fontSize: 14),
                   textAlign: TextAlign.center,
@@ -84,14 +86,14 @@ class DriverDashboard extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           // Actions Section
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Your Actions',
                   style: TextStyle(
                     fontSize: 20,
@@ -99,7 +101,7 @@ class DriverDashboard extends StatelessWidget {
                     color: Color(0xFF000000), // SSecondaryColor for text
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -123,7 +125,7 @@ class DriverDashboard extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -162,7 +164,7 @@ class ActionButton extends StatelessWidget {
   final String imagePath;
   final VoidCallback onTap;
 
-  const ActionButton({
+  const ActionButton({super.key,
     required this.title,
     required this.description,
     required this.imagePath,
@@ -175,11 +177,11 @@ class ActionButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: MediaQuery.of(context).size.width * 0.4,
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          border: Border.all(color: Color(0xFFFF9800)), // Orange for borders
+          border: Border.all(color: const Color(0xFFFF9800)), // Orange for borders
           borderRadius: BorderRadius.circular(15),
-          color: Color(0xFFF5F5F5), // SlightGray for background
+          color: const Color(0xFFF5F5F5), // SlightGray for background
         ),
         child: Column(
           children: [
@@ -187,20 +189,20 @@ class ActionButton extends StatelessWidget {
               imagePath,
               height: 60,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Color(0xFF1E88E5), // SprimaryBlue for titles
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Text(
               description,
-              style: TextStyle(color: Color(0xFF4E4B4B)), // SPrimaryColor for descriptions
+              style: const TextStyle(color: Color(0xFF4E4B4B)), // SPrimaryColor for descriptions
               textAlign: TextAlign.center,
             ),
           ],

@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import '../../../../../constants/size.dart';
 import '../../../../../constants/text_strings.dart';
 
@@ -10,7 +12,7 @@ class SignUpFormWidget extends StatelessWidget {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseFirestore firestore = FirebaseFirestore.instance; // Firestore instance
 
-  /// Register User and Save to Firestore
+  /// Register User and Save to Firestore and MongoDB
   Future<void> _registerUser(
       BuildContext context, String fullName, String email, String phone, String password) async {
     try {
@@ -28,15 +30,36 @@ class SignUpFormWidget extends StatelessWidget {
         'createdAt': DateTime.now(),
       });
 
-      // 3. Show Success Message
+      // 3. Store User Data in MongoDB
+      await _storeUserDataInMongoDB(userCredential.user!.uid, fullName, email, phone);
+
+      // 4. Show Success Message
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Registration successful! Data saved to Firestore.")),
+        SnackBar(content: Text("Registration successful! Data saved to Firestore and MongoDB.")),
       );
     } catch (e) {
       // Show Error Message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Error: ${e.toString()}")),
       );
+    }
+  }
+
+  Future<void> _storeUserDataInMongoDB(String uid, String fullName, String email, String phone) async {
+    final url = 'http://localhost:5000/api/users'; // Change to your backend URL
+    final response = await http.post(
+      Uri.parse(url),
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({
+        'uid': uid,
+        'fullName': fullName,
+        'email': email,
+        'phone': phone,
+      }),
+    );
+
+    if (response.statusCode != 201) {
+      throw Exception('Failed to store user data in MongoDB');
     }
   }
 

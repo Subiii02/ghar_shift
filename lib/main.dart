@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ghar Shift',
-      initialRoute: '/driver_dashboard',
+      initialRoute: '/onboarding',
       getPages: [
         GetPage(name: '/splash', page: () => const SplashScreen()),
         GetPage(name: '/onboarding', page: () => const OnBoardingScreen()),

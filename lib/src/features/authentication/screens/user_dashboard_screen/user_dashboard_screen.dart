@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ghar_shift/src/features/authentication/screens/user_dashboard_screen/profile_screen.dart';
 import '../../../../constants/colors.dart';
+import '../../../../constants/image_strings.dart';
 import 'menu_screen.dart';
 
 class UserDashboard extends StatelessWidget {
@@ -29,7 +30,7 @@ class UserDashboard extends StatelessWidget {
             const Text(
               'Ghar Shift',
               style: TextStyle(
-                color: Colors.orange,
+                color: Colors.white,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
@@ -73,7 +74,7 @@ class UserDashboard extends StatelessWidget {
             child: Column(
               children: [
                 Image.asset(
-                  'assets/banner.png', // Replace with your banner image
+                  SOnBoardingImage2, // Replace with your banner image
                   height: 120,
                 ),
                 const SizedBox(height: 10),

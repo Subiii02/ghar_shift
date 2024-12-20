@@ -3,13 +3,13 @@ import 'package:ghar_shift/src/features/authentication/models/handle_api/authser
 import '../../../../constants/size.dart';
 import '../../../../constants/text_strings.dart';
 import '../forget_password/forget_password_options/forget_password_model_bottom_sheet.dart';
-
 class LoginForm extends StatelessWidget {
   LoginForm({super.key});
 
   // Controllers for capturing user input
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final AuthService authService = AuthService(); // Create an instance of AuthService
 
   @override
   Widget build(BuildContext context) {
@@ -72,17 +72,24 @@ class LoginForm extends StatelessWidget {
                     return;
                   }
 
-                  // Login Attempt
-                  final response = await AuthService.login(email, password);
+                  try {
+                    // Login Attempt
+                    final response = await authService.login(email, password);
 
-                  if (response['success']) {
+                    if (response['success']) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Login Successful! Welcome ${response['data']['email']}")),
+                      );
+                      Navigator.pushNamed(context, '/user_dashboard');
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text(response['message'] ?? "Login failed. Please try again.")),
+                      );
+                    }
+                  } catch (e) {
+                    // Handle unexpected errors gracefully
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text("Login Successful! Welcome ${response['data']['name']}")),
-                    );
-                    Navigator.pushNamed(context, '/user_dashboard'); // Replace with your home route
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text(response['message'])),
+                      SnackBar(content: Text("An error occurred: $e")),
                     );
                   }
                 },

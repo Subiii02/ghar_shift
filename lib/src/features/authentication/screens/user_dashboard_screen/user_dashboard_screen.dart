@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:ghar_shift/src/features/authentication/screens/user_dashboard_screen/profile_screen.dart';
 import '../../../../constants/colors.dart';
 import '../../../../constants/image_strings.dart';
+import 'book_truck_screen.dart';
 import 'menu_screen.dart';
+import 'movingrelocation_screen.dart';
 
 class UserDashboard extends StatelessWidget {
   static const String routeName = '/user_dashboard';
@@ -24,8 +26,7 @@ class UserDashboard extends StatelessWidget {
                   context,
                   MaterialPageRoute(builder: (context) => MenuScreen()),
                 );
-
-              }, // Handle menu icon press
+              },
             ),
             const Text(
               'Ghar Shift',
@@ -39,8 +40,8 @@ class UserDashboard extends StatelessWidget {
               icon: const Icon(Icons.person, color: SSecondaryColor), // Secondary color for icons
               onPressed: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ProfileScreen()),
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileScreen()),
                 );
               },
             ),
@@ -98,12 +99,12 @@ class UserDashboard extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           // Services Section
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Services We Provide...',
                   style: TextStyle(
                     fontSize: 20,
@@ -111,21 +112,37 @@ class UserDashboard extends StatelessWidget {
                     color: SPrimaryColor, // Primary color for section title
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     // Service Card 1
-                    ServiceCard(
-                      title: 'Moving/Relocation',
-                      description: 'Includes transport, mover & packing services.',
-                      imagePath: 'assets/moving.png',
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const MovingRelocationScreen()),
+                        );
+                      },
+                      child: const ServiceCard(
+                        title: 'Moving/Relocation',
+                        description: 'Includes transport, mover & packing services.',
+                        imagePath: 'assets/moving.png',
+                      ),
                     ),
                     // Service Card 2
-                    ServiceCard(
-                      title: 'Book a Truck',
-                      description: 'Book a vehicle to move small items.',
-                      imagePath: 'assets/truck.png',
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const BookTruckScreen()),
+                        );
+                      },
+                      child: const ServiceCard(
+                        title: 'Book a Truck',
+                        description: 'Book a vehicle to move small items.',
+                        imagePath: 'assets/truck.png',
+                      ),
                     ),
                   ],
                 ),
@@ -143,7 +160,8 @@ class ServiceCard extends StatelessWidget {
   final String description;
   final String imagePath;
 
-  const ServiceCard({super.key,
+  const ServiceCard({
+    super.key,
     required this.title,
     required this.description,
     required this.imagePath,
@@ -185,3 +203,4 @@ class ServiceCard extends StatelessWidget {
     );
   }
 }
+

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import '../../../../constants/text_strings.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
@@ -22,10 +21,6 @@ class ForgotPasswordScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () => Get.toNamed('/reset-email'),
               child: const Text(SResetViaEmail),
-            ),
-            ElevatedButton(
-              onPressed: () => Get.toNamed('/reset-phone'),
-              child: const Text(SResetViaPhone),
             ),
           ],
         ),

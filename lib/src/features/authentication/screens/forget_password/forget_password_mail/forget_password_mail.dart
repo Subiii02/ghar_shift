@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import '../../../../../common_widgets/form/form_header_widget.dart';
 import '../../../../../constants/image_strings.dart';
 import '../../../../../constants/size.dart';
@@ -38,22 +37,23 @@ class ForgetPasswordMail extends StatelessWidget {
                           label: Text(SEmail),
                           hintText: SEmail,
                           prefixIcon: Icon(Icons.mail_outline_rounded),
-                        ) ,
+                        ),
                       ),
-                      const SizedBox(height: 20.0,),
-                      SizedBox(width: double.infinity ,
-                          child: ElevatedButton(
-                              onPressed: (){
-                                Get.to(() =>const OPTScreen());
-                              },
-                              child: const Text(SNext))),
-
-                    ],) ,)
-
-
+                      const SizedBox(height: 20.0),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Get.to(() => const OPTScreen());
+                          },
+                          child: const Text(SNext),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
-
           ),
         ),
       ),

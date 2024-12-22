@@ -10,12 +10,14 @@ class UserDashboard extends StatelessWidget {
   static const String routeName = '/user_dashboard';
 
   const UserDashboard({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: SprimaryBlue, // Primary Blue for app bar
         elevation: 0,
+        automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -203,4 +205,3 @@ class ServiceCard extends StatelessWidget {
     );
   }
 }
-

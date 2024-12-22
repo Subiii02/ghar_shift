@@ -3,13 +3,21 @@ import 'package:ghar_shift/src/features/authentication/models/handle_api/authser
 import '../../../../constants/size.dart';
 import '../../../../constants/text_strings.dart';
 import '../forget_password/forget_password_options/forget_password_model_bottom_sheet.dart';
-class LoginForm extends StatelessWidget {
+
+class LoginForm extends StatefulWidget {
   LoginForm({super.key});
 
+  @override
+  _LoginFormState createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
   // Controllers for capturing user input
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final AuthService authService = AuthService(); // Create an instance of AuthService
+  final AuthService authService = AuthService();
+
+  bool _obscurePassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +42,24 @@ class LoginForm extends StatelessWidget {
             // Password Field
             TextFormField(
               controller: passwordController,
-              obscureText: true, // Obscures text for password
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.fingerprint_outlined),
+              obscureText: _obscurePassword,
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.lock_outline),
                 labelText: SPassword,
                 hintText: SPassword,
-                border: OutlineInputBorder(),
-                suffixIcon: Icon(Icons.remove_red_eye_sharp), // Add toggle functionality if needed
+                border: const OutlineInputBorder(),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _obscurePassword
+                        ? Icons.visibility_off
+                        : Icons.visibility,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _obscurePassword = !_obscurePassword;
+                    });
+                  },
+                ),
               ),
             ),
             const SizedBox(height: SFormHeight - 20),

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../../../constants/colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
+
+import '../../../../constants/colors.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -10,16 +14,80 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   File? _profileImage;
+  String? _profileImageUrl; // URL to load from Firebase Storage
 
   // Text editing controllers for user inputs
-  final TextEditingController _nameController = TextEditingController(text: 'Subhan');
-  final TextEditingController _emailController = TextEditingController(text: 'Subhan@gmail.com');
-  final TextEditingController _phoneController = TextEditingController(text: '+1234567890');
-  final TextEditingController _cityController = TextEditingController(text: 'Islammabad');
-  final TextEditingController _addressController = TextEditingController(text: '123 Main Street');
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _cityController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
 
   // State variable to toggle between view and edit modes
   bool _isEditing = false;
+
+  // User ID
+  final String userId = FirebaseAuth.instance.currentUser!.uid;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadProfileData();
+  }
+
+  // Function to load profile data from Firebase
+  Future<void> _loadProfileData() async {
+    try {
+      final userDoc = await FirebaseFirestore.instance.collection('users').doc(userId).get();
+      if (userDoc.exists) {
+        setState(() {
+          _nameController.text = userDoc['name'] ?? '';
+          _emailController.text = userDoc['email'] ?? '';
+          _phoneController.text = userDoc['phone'] ?? '';
+          _cityController.text = userDoc['city'] ?? '';
+          _addressController.text = userDoc['address'] ?? '';
+          _profileImageUrl = userDoc['profileImage']; // Load image URL
+        });
+      }
+    } catch (e) {
+      print('Error loading profile data: $e');
+    }
+  }
+
+  // Function to save profile data to Firebase
+  Future<void> _saveProfileData() async {
+    try {
+      final userDoc = FirebaseFirestore.instance.collection('users').doc(userId);
+      await userDoc.set({
+        'name': _nameController.text,
+        'email': _emailController.text,
+        'phone': _phoneController.text,
+        'city': _cityController.text,
+        'address': _addressController.text,
+        'profileImage': _profileImageUrl ?? '', // Save image URL
+      }, SetOptions(merge: true));
+    } catch (e) {
+      print('Error saving profile data: $e');
+    }
+  }
+
+  // Function to upload profile image to Firebase Storage
+  Future<void> _uploadProfileImage() async {
+    try {
+      if (_profileImage == null) return;
+
+      final storageRef = FirebaseStorage.instance.ref().child('profile_images/$userId.jpg');
+      final uploadTask = storageRef.putFile(_profileImage!);
+      final snapshot = await uploadTask.whenComplete(() {});
+      final downloadUrl = await snapshot.ref.getDownloadURL();
+
+      setState(() {
+        _profileImageUrl = downloadUrl; // Save URL locally for display
+      });
+    } catch (e) {
+      print('Error uploading profile image: $e');
+    }
+  }
 
   // Function to pick an image
   Future<void> _pickImage() async {
@@ -28,6 +96,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       setState(() {
         _profileImage = File(pickedFile.path);
       });
+      await _uploadProfileImage(); // Upload to Firebase Storage
     }
   }
 
@@ -62,8 +131,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   CircleAvatar(
                     radius: 60,
                     backgroundImage: _profileImage != null
-                        ? FileImage(_profileImage!)
-                        : AssetImage('assets/default_avatar.png') as ImageProvider,
+                        ? FileImage(_profileImage!) // If local file is picked
+                        : (_profileImageUrl != null && _profileImageUrl!.isNotEmpty
+                        ? NetworkImage(_profileImageUrl!) // Load from Firebase
+                        : AssetImage('assets/default_avatar.png')) as ImageProvider,
                   ),
                   if (_isEditing)
                     Positioned(
@@ -90,7 +161,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             SizedBox(height: 20),
             // Toggle Button
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 setState(() {
                   if (_isEditing) {
                     // Save changes and show confirmation
@@ -98,6 +169,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   }
                   _isEditing = !_isEditing;
                 });
+                if (!_isEditing) {
+                  // Save profile data when exiting edit mode
+                  await _saveProfileData();
+                }
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: _isEditing ? Colors.green : SprimaryBlue,

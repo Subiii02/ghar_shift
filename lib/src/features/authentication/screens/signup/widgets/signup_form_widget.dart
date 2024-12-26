@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 import '../../../../../constants/size.dart';
 import '../../../../../constants/text_strings.dart';
+import 'package:mongo_dart/mongo_dart.dart' as mongo;
+
+
 
 class SignUpFormWidget extends StatelessWidget {
   SignUpFormWidget({super.key});
@@ -12,17 +13,30 @@ class SignUpFormWidget extends StatelessWidget {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
+  // MongoDB connection URI
+  final String mongoUri = "mongodb+srv://subiii:Subhan523@cluster.o7jea.mongodb.net/ghar_shift?retryWrites=true&w=majority";
+  final String mongoCollection = "users";
+
   /// Register User and Save to Firestore and MongoDB
   Future<void> _registerUser(
       BuildContext context, String fullName, String email, String phone, String password) async {
     try {
-      // 1. Register User with Firebase Authentication
+      // Step 1: Check if Email Already Exists in MongoDB
+      final isEmailExists = await _checkEmailInMongoDB(email);
+      if (isEmailExists) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Email already exists. Please use a different email.")),
+        );
+        return;
+      }
+
+      // Step 2: Register User with Firebase Authentication
       UserCredential userCredential = await auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
 
-      // 2. Store User Data in Firestore
+      // Step 3: Store User Data in Firestore
       await firestore.collection('users').doc(userCredential.user!.uid).set({
         'fullName': fullName,
         'email': email,
@@ -30,10 +44,10 @@ class SignUpFormWidget extends StatelessWidget {
         'createdAt': DateTime.now(),
       });
 
-      // 3. Store User Data in MongoDB
+      // Step 4: Store User Data in MongoDB
       await _storeUserDataInMongoDB(userCredential.user!.uid, fullName, email, phone);
 
-      // 4. Show Success Message and Navigate to Login Page
+      // Step 5: Show Success Message and Navigate to Login Page
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Registration successful! Now you can login to the application.")),
       );
@@ -47,28 +61,40 @@ class SignUpFormWidget extends StatelessWidget {
     }
   }
 
-  Future<void> _storeUserDataInMongoDB(String uid, String fullName, String email, String phone) async {
+  /// Check if Email Exists in MongoDB
+  Future<bool> _checkEmailInMongoDB(String email) async {
+    mongo.Db db = mongo.Db(mongoUri);
     try {
-      final url = 'http://localhost:5000/api/users'; // Change to your backend URL
-      final response = await http.post(
-        Uri.parse(url),
-        headers: {'Content-Type': 'application/json'},
-        body: json.encode({
-          'uid': uid,
-          'fullName': fullName,
-          'email': email,
-          'phone': phone,
-        }),
-      );
-
-      if (response.statusCode != 201) {
-        throw Exception('Failed to store user data in MongoDB');
-      }
+      await db.open();
+      final collection = db.collection(mongoCollection);
+      final user = await collection.findOne({"email": email});
+      return user != null;
     } catch (e) {
-      throw Exception('MongoDB Error: ${e.toString()}');
+      throw Exception('Error checking email in MongoDB: ${e.toString()}');
+    } finally {
+      await db.close();
     }
   }
 
+  /// Store User Data in MongoDB
+  Future<void> _storeUserDataInMongoDB(String uid, String fullName, String email, String phone) async {
+    mongo.Db db = mongo.Db(mongoUri);
+    try {
+      await db.open();
+      final collection = db.collection(mongoCollection);
+      await collection.insertOne({
+        "uid": uid,
+        "fullName": fullName,
+        "email": email,
+        "phone": phone,
+        "createdAt": DateTime.now().toIso8601String(),
+      });
+    } catch (e) {
+      throw Exception('Error storing user data in MongoDB: ${e.toString()}');
+    } finally {
+      await db.close();
+    }
+  }
   @override
   Widget build(BuildContext context) {
     // Text Controllers
@@ -126,6 +152,7 @@ class SignUpFormWidget extends StatelessWidget {
             TextFormField(
               controller: phoneController,
               keyboardType: TextInputType.phone,
+              maxLength: 13,
               decoration: const InputDecoration(
                 label: Text(SPhoneNo),
                 prefixIcon: Icon(Icons.phone),

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ghar_shift/src/features/authentication/models/handle_api/authservice.dart';
 import '../../../../constants/size.dart';
@@ -19,6 +20,29 @@ class _LoginFormState extends State<LoginForm> {
 
   bool _obscurePassword = true;
 
+
+  Future<void> resetPassword( String email) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      // Display success snackbar
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Password reset email sent to $email'),
+          backgroundColor: Colors.green,
+          duration: Duration(seconds: 3),
+        ),
+      );
+    } catch (e) {
+      // Handle errors and show error snackbar
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Failed to send password reset email. ${e.toString()}'),
+          backgroundColor: Colors.red,
+          duration: Duration(seconds: 3),
+        ),
+      );
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -68,8 +92,9 @@ class _LoginFormState extends State<LoginForm> {
             Align(
               alignment: Alignment.centerRight,
               child: TextButton(
-                onPressed: () {
-                  ForgetPasswordScreen.buildShowModalBottomSheet(context);
+                onPressed: () async {
+                  final email = emailController.text.trim();
+                  await resetPassword(email);
                 },
                 child: Text(SForgetPassword),
               ),

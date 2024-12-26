@@ -4,7 +4,7 @@ const String SAppName = "Gharshift";
 const String SAppTagLine = "Welcome To Gharshift";
 
 const String ipAddress= "http://192.168.1.41:5000";
-
+const String MONGO_URL="mongodb+srv://27839:subi27839@cluster0.fcvsm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 //--on Boarding Screen
 const String SOnBoardingTitle1 = "Gharshift";
 const String SOnBoardingTitle2 = "Hello There";

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:ghar_shift/src/features/authentication/screens/login/login_screen.dart'; // Import the LoginScreen
 import 'package:ghar_shift/src/features/authentication/screens/signup/widgets/signup_form_widget.dart';
 import '../../../../../common_widgets/form/form_header_widget.dart';

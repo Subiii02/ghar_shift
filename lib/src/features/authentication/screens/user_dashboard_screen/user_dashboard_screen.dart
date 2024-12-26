@@ -116,34 +116,38 @@ class UserDashboard extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     // Service Card 1
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const MovingRelocationScreen()),
-                        );
-                      },
-                      child: const ServiceCard(
-                        title: 'Moving/Relocation',
-                        description: 'Includes transport, mover & packing services.',
-                        imagePath: 'assets/moving.png',
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const MovingRelocationScreen()),
+                          );
+                        },
+                        child: const ServiceCard(
+                          title: 'Moving/Relocation',
+                          description: 'Includes transport, mover & packing services.',
+                          imagePath: SOnBoardingImage1,
+                        ),
                       ),
                     ),
+                    const SizedBox(width: 10), // Add some space between the cards
                     // Service Card 2
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const BookTruckScreen()),
-                        );
-                      },
-                      child: const ServiceCard(
-                        title: 'Book a Truck',
-                        description: 'Book a vehicle to move small items.',
-                        imagePath: 'assets/truck.png',
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const BookTruckScreen()),
+                          );
+                        },
+                        child: const ServiceCard(
+                          title: 'Book a Truck',
+                          description: 'Book a vehicle to move small items.',
+                          imagePath: SOnBoardingImage3,
+                        ),
                       ),
                     ),
                   ],
@@ -172,7 +176,6 @@ class ServiceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.4,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.orange),

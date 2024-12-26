@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ghar_shift/src/features/authentication/screens/google_signin/google_signin.dart';
 import 'package:ghar_shift/src/features/authentication/screens/login/login_screen.dart'; // Import the LoginScreen
 import 'package:ghar_shift/src/features/authentication/screens/signup/widgets/signup_form_widget.dart';
 import '../../../../../common_widgets/form/form_header_widget.dart';
@@ -15,7 +14,6 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller =Get.put(GoogleAuthService());
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -33,37 +31,7 @@ class SignupScreen extends StatelessWidget {
                 const SizedBox(height: SDefaultSize),
 
                 // Signup Form Widget
-                 SignUpFormWidget(),
-
-                const SizedBox(height: SDefaultSize),
-
-                // Divider Section with "OR"
-                const Column(
-                  children: [
-                    Divider(thickness: 1),
-                    Text(
-                      "OR",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Divider(thickness: 1),
-                    SizedBox(height: SDefaultSize / 2),
-                  ],
-                ),
-
-                // Google Sign-In Button
-                SizedBox(
-                  width: double.infinity,
-                  child: OutlinedButton.icon(
-                    onPressed: () {
-                      controller.signInWithGoogle();
-                    },
-                    icon: const Image(
-                      image: AssetImage(SGoogleLogoImage),
-                      width: 20.0,
-                    ),
-                    label: Text(SSignInWithGoogle.toUpperCase()),
-                  ),
-                ),
+                SignUpFormWidget(),
 
                 const SizedBox(height: SDefaultSize),
 

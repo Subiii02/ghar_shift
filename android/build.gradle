@@ -1,17 +1,17 @@
 buildscript {
     repositories {
-        google() // Add this line if not already present
+        google()
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0' // Ensure you have the appropriate version
-        classpath 'com.google.gms:google-services:4.3.10' // Added Google services classpath
+        classpath 'com.android.tools.build:gradle:8.1.0'
+        classpath 'com.google.gms:google-services:4.3.15'
     }
 }
 
 allprojects {
     repositories {
-        google() // Ensured google repository is present
+        google()
         mavenCentral()
     }
 }
@@ -22,12 +22,11 @@ subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 
     afterEvaluate {
-        // Ensure dependencies are resolved properly
         if (project.hasProperty("android")) {
             android {
                 compileOptions {
-                    sourceCompatibility = JavaVersion.VERSION_1_8
-                    targetCompatibility = JavaVersion.VERSION_1_8
+                    sourceCompatibility = JavaVersion.VERSION_17
+                    targetCompatibility = JavaVersion.VERSION_17
                 }
             }
         }
@@ -36,13 +35,4 @@ subprojects {
 
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
-}
-
-// Fix for potential path_provider_android issue
-gradle.projectsEvaluated {
-    subprojects {
-        tasks.withType(JavaCompile) {
-            options.forkOptions.jvmArgs += ["--add-opens", "java.base/java.nio=ALL-UNNAMED"]
-        }
-    }
 }

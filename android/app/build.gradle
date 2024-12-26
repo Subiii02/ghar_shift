@@ -1,10 +1,8 @@
 plugins {
     id "com.android.application"
-    // START: FlutterFire Configuration
-    id 'com.google.gms.google-services'
-    // END: FlutterFire Configuration
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
+    id 'com.google.gms.google-services' // Firebase services plugin
 }
 
 android {
@@ -13,20 +11,20 @@ android {
     ndkVersion = "26.1.10909125"
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
+        jvmTarget = JavaVersion.VERSION_17
     }
 
     defaultConfig {
-        applicationId "com.example.ghar_shift" // Replace with your app ID if different
-        minSdkVersion 23 // Update this value to 23
-        targetSdkVersion flutter.targetSdkVersion // Use the targetSdkVersion from Flutter
-        versionCode flutter.versionCode // Use Flutter's version code
-        versionName flutter.versionName // Use Flutter's version name
+        applicationId "com.example.ghar_shift"
+        minSdkVersion 23
+        targetSdkVersion flutter.targetSdkVersion
+        versionCode flutter.versionCode
+        versionName flutter.versionName
     }
 
     buildTypes {
@@ -36,6 +34,12 @@ android {
     }
 }
 
+kotlin{
+    jvmToolchain(17)
+}
+
 flutter {
     source = "../.."
 }
+
+

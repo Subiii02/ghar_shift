@@ -2,14 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ghar_shift/src/features/authentication/screens/login/login_screen.dart'; // Import the LoginScreen
 import 'package:ghar_shift/src/features/authentication/screens/signup/widgets/signup_form_widget.dart';
-import '../../../../../common_widgets/form/form_header_widget.dart';
-import '../../../../../constants/image_strings.dart';
-import '../../../../../constants/size.dart';
-import '../../../../../constants/text_strings.dart';
 
-class SignupScreen extends StatelessWidget {
+import '../../../../../../common_widgets/fade_in_animation/form/form_header_widget.dart';
+import '../../../../../../constants/image_strings.dart';
+import '../../../../../../constants/size.dart';
+import '../../../../../../constants/text_strings.dart';
+
+class LaborSignupScreen extends StatelessWidget {
   static const String routeName = '/labor_signup';
-  const SignupScreen({super.key});
+  const LaborSignupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

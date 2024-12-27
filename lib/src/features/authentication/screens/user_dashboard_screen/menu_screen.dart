@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'profile_screen.dart'; // Import the Profile Screen
 import '../../../../constants/colors.dart';
+import 'package:firebase_auth/firebase_auth.dart'; // Import Firebase Authentication
 
 class MenuScreen extends StatelessWidget {
   @override
@@ -57,8 +58,7 @@ class MenuScreen extends StatelessWidget {
               leading: Icon(Icons.logout, color: Colors.orange),
               title: Text('Logout'),
               onTap: () {
-                _showSnackbar(context, 'You have been logged out.');
-                // Add logout logic here
+                _showLogoutConfirmationDialog(context);
               },
             ),
           ],
@@ -161,6 +161,46 @@ class MenuScreen extends StatelessWidget {
               },
               child: Text('Delete'),
               style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  // Dialog to confirm logout and perform logout action
+  void _showLogoutConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Logout'),
+          content: Text('Are you sure you want to log out?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); // Close the dialog
+              },
+              child: Text('Cancel'),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                try {
+                  // Perform Firebase sign-out
+                  await FirebaseAuth.instance.signOut();
+
+                  // Navigate to the login screen
+                  Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
+
+                  // Show confirmation snackbar
+                  _showSnackbar(context, 'You have been logged out.');
+                } catch (e) {
+                  // Handle logout errors
+                  _showSnackbar(context, 'Logout failed: ${e.toString()}');
+                }
+              },
+              child: Text('Logout'),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
             ),
           ],
         );

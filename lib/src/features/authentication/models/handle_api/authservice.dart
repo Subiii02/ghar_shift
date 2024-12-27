@@ -43,7 +43,7 @@ class AuthService {
 
   // Signup Function
   Future<Map<String, dynamic>> signup(String name, String email, String password) async {
-    final url = Uri.parse("$ipAddress/api/auth/signup");
+    final url = Uri.parse("$ipAddress/api/auth/labor_signup");
     try {
       final response = await http.post(
         url,

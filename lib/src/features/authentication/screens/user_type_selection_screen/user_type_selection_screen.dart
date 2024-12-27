@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ghar_shift/src/features/authentication/screens/driver/driver_login/driver_login_screen.dart';
+import 'package:ghar_shift/src/features/authentication/screens/labor/labor_login/labor_login_screen.dart';
 import 'package:ghar_shift/src/features/authentication/screens/login/login_screen.dart';
+
+import '../customer/customer_login/customer_login_screen.dart';
 
 class UserTypeSelectionScreen extends StatelessWidget {
   static const String routeName = '/user_type_selection';
@@ -22,7 +26,7 @@ class UserTypeSelectionScreen extends StatelessWidget {
               // User Button
               ElevatedButton(
                 onPressed: () {
-                  Get.to(() => const LoginScreen(), arguments: "User");
+                  Get.to(() => const CustomerLoginScreen(), arguments: "User");
                 },
                 child: const Text("User"),
               ),
@@ -30,7 +34,7 @@ class UserTypeSelectionScreen extends StatelessWidget {
               // Driver Button
               ElevatedButton(
                 onPressed: () {
-                  Get.to(() => const LoginScreen(), arguments: "Driver");
+                  Get.to(() => const DriverLoginScreen(), arguments: "Driver");
                 },
                 child: const Text("Driver"),
               ),
@@ -38,7 +42,7 @@ class UserTypeSelectionScreen extends StatelessWidget {
               // Labor Button
               ElevatedButton(
                 onPressed: () {
-                  Get.to(() => const LoginScreen(), arguments: "Labor");
+                  Get.to(() => const LaborLoginScreen(), arguments: "Labor");
                 },
                 child: const Text("Labor"),
               ),

@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../../../../../constants/size.dart';
-import '../../../../../constants/text_strings.dart';
 
-class LaborSignUpFormWidget extends StatelessWidget {
-  LaborSignUpFormWidget({super.key});
+import '../../../../../../constants/size.dart';
+import '../../../../../../constants/text_strings.dart';
+
+class CustomerSignUpFormWidget extends StatelessWidget {
+  CustomerSignUpFormWidget({super.key});
 
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseFirestore firestore = FirebaseFirestore.instance;

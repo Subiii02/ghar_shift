@@ -11,7 +11,7 @@ const String SOnBoardingImage3 = "assets/images/onboarding_screens/onboardingscr
 //welcome Screen images
 const String SWelcomeScreenImage = "assets/images/welcome_images/welcome_screen_image.png";
 
-//login image
+//labor_login image
 const String SGoogleLogoImage = "assets/logo/google_logo.png";
 
 

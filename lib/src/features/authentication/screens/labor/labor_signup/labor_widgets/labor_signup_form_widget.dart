@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../../../../../constants/size.dart';
-import '../../../../../constants/text_strings.dart';
+
+import '../../../../../../constants/size.dart';
+import '../../../../../../constants/text_strings.dart';
 
 class LaborSignUpFormWidget extends StatelessWidget {
   LaborSignUpFormWidget({super.key});
@@ -47,7 +48,7 @@ class LaborSignUpFormWidget extends StatelessWidget {
       );
 
       await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
-      Navigator.pushNamed(context, '/user_dashboard');
+      Navigator.pushNamed(context, '/labor_dashboard');
       // Replace with your labor_login route
     } catch (e) {
       // Show Error Message

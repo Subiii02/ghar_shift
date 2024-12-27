@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import '../../../../common_widgets/form/form_header_widget.dart';
-import '../../../../constants/image_strings.dart';
-import '../../../../constants/size.dart';
-import '../../../../constants/text_strings.dart';
-import 'login_footer_widget.dart';
-import 'login_form_widget.dart';
+import '../../../../../common_widgets/fade_in_animation/form/form_header_widget.dart';
+import '../../../../../constants/image_strings.dart';
+import '../../../../../constants/size.dart';
+import '../../../../../constants/text_strings.dart';
+import 'customer_login_footer_widget.dart';
+import 'customer_login_form_widget.dart';
 
-class LoginScreen extends StatelessWidget {
+class CustomerLoginScreen extends StatelessWidget {
   static const String routeName = '/labor_login';
-  const LoginScreen({super.key});
+  const CustomerLoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +27,9 @@ class LoginScreen extends StatelessWidget {
                   subTitle: SLoginSubTitle,
                 ),
                 // Login Form
-                LoginForm(),
+                CustomerLoginForm(),
                 // Footer
-                const LoginFooterWidget(),
+                const CustomerLoginFooterWidget(),
               ],
             ),
           ),
